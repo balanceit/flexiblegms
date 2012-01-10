@@ -7,6 +7,9 @@ var fs = require('fs');
 var https = require('https');
 var http = require('http');
 
+var port = 13539;
+var sslport = 13539;
+
 var count = 0;
 
 var app = express.createServer();
@@ -28,8 +31,8 @@ app.use("/images", express.static(__dirname + '/images'));
 
 app.use(express.static(__dirname));
 
-http.createServer(app.handle.bind(app)).listen(3000);
-https.createServer(options,app.handle.bind(app)).listen(3443);
+http.createServer(app.handle.bind(app)).listen(port);
+//https.createServer(options,app.handle.bind(app)).listen(sslport);
 
 /*some middleware
  *  restrict will just ensure that the user is logged in on the routes where
@@ -40,7 +43,8 @@ function restrict(req, res, next){
 	if (req.session.user) {
 		next();
 	} else {
-		res.redirect('https://localhost:3443/sessions/new?rd=' + req.url);
+		//res.redirect('https://localhost:' + sslport + '/sessions/new?rd=' + req.url);
+		res.redirect('http://localhost:' + sslport + '/sessions/new?rd=' + req.url);
 	}
 }
 /*some more middleware
@@ -84,7 +88,7 @@ app.post('/sessions', function(req, res){
 			if (req.header('Accept') == 'application/json'){
 				res.send('ok');
 			} else {
-				res.redirect(req.body.rd ? 'http://localhost:3000' + req.body.rd : 'http://localhost:3000' + '/projects');
+				res.redirect(req.body.rd ? 'http://localhost:' + port + req.body.rd : 'http://localhost:' + port + '/projects');
 			}
 			
 		} else {
@@ -93,7 +97,8 @@ app.post('/sessions', function(req, res){
 				res.writeHead(403, {"Content-Type": "application/json"});
 				res.end('Forbidden');
 			} else {
-				res.redirect('https://localhost:3443/sessions/new?rd=' + req.body.rd);
+				//res.redirect('https://localhost:' + sslport + '/sessions/new?rd=' + req.body.rd);
+				res.redirect('http://localhost:' + sslport + '/sessions/new?rd=' + req.body.rd);
 			}
 			
 		}
@@ -105,7 +110,8 @@ app.get('/sessions/destroy', function(req, res){
 	console.log(++count + "GET: " + req.url);
 	
 	delete req.session.user;
-	res.redirect('https://localhost:3443/sessions/new');
+	//res.redirect('https://localhost:' + sslport + '/sessions/new');
+	res.redirect('http://localhost:' + sslport + '/sessions/new');
 });
 
 app.get('/ips', function(req, res){
