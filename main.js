@@ -14,8 +14,8 @@ var count = 0;
 
 var app = express.createServer();
 var options = {
-		  key: fs.readFileSync('./certs/webserver.nopass.key'),
-		  cert: fs.readFileSync('./certs/newcert.pem')
+		  key: fs.readFileSync(__dirname + '/certs/webserver.nopass.key'),
+		  cert: fs.readFileSync(__dirname + '/certs/newcert.pem')
 		};
 
 
