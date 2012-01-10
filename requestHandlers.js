@@ -4,8 +4,8 @@ var jsdom = require('jsdom');
 var dao = require("./data/dao");
 var userDao = require("./data/user");
 var workflowDao = require("./data/workflow");
-var jquery = fs.readFileSync("./scripts/jquery.js").toString();
-var purejs = fs.readFileSync("./scripts/pure.js").toString();
+var jquery = fs.readFileSync(__dirname + "/scripts/jquery.js").toString();
+var purejs = fs.readFileSync(__dirname + "/scripts/pure.js").toString();
 var fs     = require('fs');
 var vb     = require('./validation/validationBean');
 
