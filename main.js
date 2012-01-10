@@ -44,7 +44,7 @@ function restrict(req, res, next){
 		next();
 	} else {
 		//res.redirect('https://localhost:' + sslport + '/sessions/new?rd=' + req.url);
-		res.redirect('http://localhost:' + sslport + '/sessions/new?rd=' + req.url);
+		res.redirect('/sessions/new?rd=' + req.url);
 	}
 }
 /*some more middleware
@@ -88,7 +88,8 @@ app.post('/sessions', function(req, res){
 			if (req.header('Accept') == 'application/json'){
 				res.send('ok');
 			} else {
-				res.redirect(req.body.rd ? 'http://localhost:' + port + req.body.rd : 'http://localhost:' + port + '/projects');
+				//res.redirect(req.body.rd ? 'http://localhost:' + port + req.body.rd : 'http://localhost:' + port + '/projects');
+				res.redirect(req.body.rd ? req.body.rd : '/projects');
 			}
 			
 		} else {
@@ -98,7 +99,7 @@ app.post('/sessions', function(req, res){
 				res.end('Forbidden');
 			} else {
 				//res.redirect('https://localhost:' + sslport + '/sessions/new?rd=' + req.body.rd);
-				res.redirect('http://localhost:' + sslport + '/sessions/new?rd=' + req.body.rd);
+				res.redirect('/sessions/new?rd=' + req.body.rd);
 			}
 			
 		}
@@ -111,7 +112,7 @@ app.get('/sessions/destroy', function(req, res){
 	
 	delete req.session.user;
 	//res.redirect('https://localhost:' + sslport + '/sessions/new');
-	res.redirect('http://localhost:' + sslport + '/sessions/new');
+	res.redirect('/sessions/new');
 });
 
 app.get('/ips', function(req, res){
