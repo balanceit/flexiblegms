@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Pure node<</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+	<link rel="stylesheet/less" href="/less/bootstrap.less" media="all" />
+	<script src="/scripts/jquery.js"></script>
+	<script src="/scripts/less.js"></script>
+	<script src="/scripts/bootstrap-modal.js"></script>
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+
+  
+    <!-- Le styles 
+    <link href="../bootstrap.css" rel="stylesheet"> -->
+    <style type="text/css">
+      body {
+	        padding-top: 60px;
+      }
+
+	  	footer#pageFooter {
+	  		position: fixed;
+	  		bottom:0;
+	  		width: 100%;
+	  		height: 25px;
+	  		margin: 5px;
+			-webkit-box-shadow: rgba(0, 0, 0, 0.246094) 0px 1px 3px 0px, rgba(0, 0, 0, 0.0976562) 0px -1px 0px 0px inset;
+			background-color: #222;
+			background-image: -webkit-linear-gradient(top, rgb(51, 51, 51), rgb(34, 34, 34));
+			background-repeat: repeat-x;
+			box-shadow: rgba(0, 0, 0, 0.246094) 0px 1px 3px 0px, rgba(0, 0, 0, 0.0976562) 0px -1px 0px 0px inset;
+	
+	  	}
+	  	footer#pageFooter p.copywrite {
+	  		color:#BFBFBF;
+	  		text-align: center;
+	  	}
+	  	#controlbuttons {
+	  		position: fixed;
+	  		bottom:60;
+	  		width: 70%;
+	  		
+	  	}
+
+  </style>
+
+	<script>
+  	$(document).ready( function(){
+		$("#theform :input:visible:enabled:first").focus();
+  	});
+	
+	</script>
+
+  </head>
+
+  <body>
+
+	<div class="topbar">
+		<div class="topbar-inner">
+			<div class="container-fluid">
+				<a class="brand" href="/ips">Flexible GMS</a>
+				<ul class="nav">
+					<li><a href="/ips">Rounds</a></li>
+					<li class="active"><a href="/projects">Projects</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+    <div id="template" class="container">
+	<div class="content">
+	    <div class="page-header">
+	    	<h2 class="">Sign in <small> use your email address or user name</small></h2>
+	    </div>
+	    
+        <div class="row span8">
+			<form action="/sessions" method="post" id="theform">
+				<div class='clearfix'>
+					<div class='input'>
+						<input class='xlarge' id='login' name='session[login]' type='text' placeholder='Username'>
+					</div>
+				</div>
+				<div class='clearfix'>
+					<div class='input'>
+						<input class='xlarge' id='password' name='session[password]' type='password' placeholder='Password'>
+					</div>
+				</div>
+				<div class='clearfix'>
+					<div class='input'>
+						<input class='btn large primary' value='Sign in' type='submit'>
+					</div>
+				</div>
+				<input id="rd" name="rd" type='hidden'>				
+				
+			</form>
+		</div>
+	</div>
+	
+    </div> <!-- /container -->
+        
+	<footer id="pageFooter">
+		<div class="continer-fluid">
+			<div class="row show-grid">
+				<div class="span4">
+					<p class="copywrite">&copy; balance.it 2011</p>
+				</div>
+				<div class="span8 offset4">
+				</div>
+			</div>
+		</div>	        
+	</footer>
+
+  </body>
+</html>

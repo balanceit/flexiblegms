@@ -1,0 +1,21 @@
+{
+	"ldap":[
+	     
+		{"uuid": "1", "name": "We give away money", "type": "agency"},
+		{"uuid": "2", "name": "Needs the money", "type": "applicant", "agency_uuid": "1"},
+		{"uuid": "3","login": "david", "password": "password", "roles": ["administrator"], "name": "David", "type": "person", "agency_uuid": "1"},
+		{"uuid": "4","login": "user", "password": "password", "roles": ["user"], "name": "User Guy", "type": "person", "agency_uuid": "1", "applicant_uuid": "2"},
+		{"uuid": "5", "name": "Org wants geld", "type": "applicant", "agency_uuid": "1"},
+		{"uuid": "6", "name": "Please i am beggin", "type": "applicant", "agency_uuid": "1"},
+		{"uuid": "7","login": "begger", "password": "password", "roles": ["user"], "name": "Begger Bum", "type": "person", "agency_uuid": "1", "applicant_uuid": "5"},
+		{"uuid": "8","login": "gelder", "password": "password", "roles": ["user"], "name": "Gelder Gelding", "type": "person", "agency_uuid": "1", "applicant_uuid": "6"}
+	],
+	"roles": [
+	    {"uuid": "1", "name": "administrator", "access": ["/.*"]},
+	    {"uuid": "2", "name": "user", "access": ["/ips", "/projects.*", "/users/:uuid/*"]},
+	    {"uuid": "3", "name": "manager", "access": ["/ips", "/projects.*", "/users.*"]},
+	    {"uuid": "3", "name": "configure", "access": ["/ips.*", "/projects.*", "/users.*"]}
+	    
+	]
+
+}

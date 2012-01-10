@@ -1,0 +1,57 @@
+{
+	"nodes":[
+	         {"name": "in progress"}
+	         , {"name": "submitted"}
+	         , {"name": "approved"}
+	         , {"name": "disapproved"}
+	         , {"name": "contracted"}
+	         , {"name": "setup"}
+	         , {"name": "active"}
+	         , {"name": "matured"}	     
+	         , {"name": "delete"}	     
+	],
+	"edges": [
+	          {"name": "submit"}
+	          , {"name": "rework"}
+	          , {"name": "approve"}
+	          , {"name": "disapprove"}
+	          , {"name": "create contract"}
+	          , {"name": "make active"}
+	          , {"name": "mature"}	          
+	          , {"name": "delete"}	          
+	],
+	"config": [
+	           {"name": "application process",
+	        	   "start": {"node": "in progress"},
+	        	   "for": "/projects/:uuid",
+	        	   "flow": [
+	        		   {"uuid": "1", "from": "in progress", "to": "submitted", "via": "submit", "pre": [], "post": [], "roles": ["user","administrator"]}
+	        		   ,{"uuid": "2", "from": "submitted", "to": "in progress", "via": "rework", "pre": [], "post": [], "roles": ["manager","administrator"]}
+	        		   ,{"uuid": "3", "from": "submitted", "to": "approved", "via": "approve", "pre": [], "post": [], "roles": ["manager","administrator"]}
+	        		   ,{"uuid": "4", "from": "submitted", "to": "disapproved", "via": "disapprove", "pre": [], "post": [], "roles": ["manager","administrator"]}
+	        		   ,{"uuid": "5", "from": "approved", "to": "contracted", "via": "create contract", "pre": [], "post": [], "roles": ["manager","administrator"]}
+	        		   ,{"uuid": "6", "from": "in progress", "to": "deleted", "via": "delete", "pre": [], "post": [], "roles": ["user","administrator"]}
+	        		   ,{"uuid": "6", "from": "submitted", "to": "deleted", "via": "delete", "pre": [], "post": [], "roles": ["manager","administrator"]}
+	        	   ]
+	           }
+	           ,{"name": "contracting",
+	        	   "start": {"node": "setup"},
+	        	   "for": "/projects/:uuid",
+	        	   "flow": [
+	        		   {"uuid": "7", "from": "setup", "to": "active", "via": "make active", "pre": [], "post": [], "roles": ["manager","administrator"]}
+	        		   ,{"uuid": "8", "from": "active", "to": "matured", "via": "mature", "pre": [], "post": [], "roles": ["manager","administrator"]}
+	        	   ]
+	           }
+	           ,{"name": "new user",
+	        	   "start": {"node": "submitted"},
+	        	   "for": "/users/:uuid",
+	        	   "flow": [
+	        		   {"uuid": "9", "from": "submitted", "to": "approved", "via": "approve", "pre": [], "post": [], "roles": ["manager","administrator"]}
+	        		   ,{"uuid": "10", "from": "submitted", "to": "disapproved", "via": "disapprove", "pre": [], "post": [], "roles": ["manager","administrator"]}
+	        		   ,{"uuid": "10", "from": "approved", "to": "deleted", "via": "delete", "pre": [], "post": [], "roles": ["manager","administrator"]}
+	        	   ]
+	           }
+	]
+	
+
+}
