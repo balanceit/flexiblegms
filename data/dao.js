@@ -32,11 +32,11 @@ function authenticate(login, password, callback){
 
 
 function getAllIPs(callback) {
-	  ////console.log("getting the data for all ips" );
+	  console.log("getting the data for all ips" );
 	  //var filePath = '../data/data.json';
 	  //var obj = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-	  ////console.log('returning from getAllIps ' + obj.ips.length)
+	  console.log('returning from getAllIps ' + obj.ips.length)
 	  return obj.ips;
 }
 

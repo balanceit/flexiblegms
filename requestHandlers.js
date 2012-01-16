@@ -69,7 +69,7 @@ function authenticate(response, postData){
 }
 
 function ips(response, postData) {
-	////console.log("Request handler 'ips'");
+	console.log("Request handler 'ips'");
 	var data = dao.getAllIPs();
 	var directive     = {'#title':function(arg){return 'Investment processes'}
 					,'#detail': function(agr){return 'Please perruse the below investment processes and choose the one which is most likely to get you money. If you find one to your liking please click on the \'apply\' button.';}
