@@ -50,7 +50,8 @@ function login(response, postData) {
 	data.url = postData.query.rd || '/projects';
 	
 	
-	dao.loadTemplate('./templates/login.html', function(buffer){
+	dao.loadTemplate('./templates/login.html', function(error, buffer){
+		if(error){_404(response, postData);}
 		jsdom.env({
 			html: buffer,
 			src: [jquery,purejs],
@@ -91,7 +92,8 @@ function ips(response, postData) {
 					}
 				};	
 	
-	dao.loadTemplate('./templates/iplist.html', function(buffer){
+	dao.loadTemplate('./templates/iplist.html', function(error, buffer){
+		if(error){_404(response, postData);}
 		console.log('template iplist loaded');
 		
 		jsdom.env({
@@ -217,7 +219,8 @@ function section(response, postData, clean) {
 			 'h5':function(){return 'Sections';}
 			};
 
-	dao.loadTemplate('./templates/wrapper.html', function(buffer){
+	dao.loadTemplate('./templates/wrapper.html', function(error, buffer){
+		if(error){_404(response, postData);}
 
 		jsdom.env({
 			html: buffer,
@@ -226,7 +229,8 @@ function section(response, postData, clean) {
 			  		var $ = window.$;
 			  		
 
-					dao.loadTemplate('./templates/list.html', function(buffer){
+					dao.loadTemplate('./templates/list.html', function(error, buffer){
+						if(error){_404(response, postData);}
 						
 						$('div#sectionlist').append(buffer);
 						
@@ -312,7 +316,8 @@ function section(response, postData, clean) {
 						console.log(flows);
 						console.log('=============================');
 						if (flows.length > 0){
-							dao.loadTemplate('./templates/dropdownlist.html', function(buffer){
+							dao.loadTemplate('./templates/dropdownlist.html', function(error, buffer){
+								if(error){_404(response, postData);}
 	
 								var html = '';
 								html+='<form id="followedge" name="followedge" method="post" action="/projects/'+project.uuid+'/nodes"></form>';
@@ -368,7 +373,8 @@ function projects(response, postData) {
 	projectData.columns = columns;
 	projectData.projects = data;
 
-	dao.loadTemplate('./templates/projectListWrapper.html', function(buffer){
+	dao.loadTemplate('./templates/projectListWrapper.html', function(error, buffer){
+		if(error){_404(response, postData);}
 
 		jsdom.env({
 			html: buffer,
@@ -376,7 +382,9 @@ function projects(response, postData) {
 			done: function(errors, window) {
 			  		var $ = window.$;
 					
-					dao.loadTemplate('./templates/datatable.html', function(buffer){
+					dao.loadTemplate('./templates/datatable.html', function(error, buffer){
+						if(error){_404(response, postData);}
+						
 						$('div#template').append(buffer);
 						$('#user').render(postData.session.user, {'.': 'name'});
 			  			$('table#datatable').render(columns, headerDirective)
@@ -403,7 +411,8 @@ function startProject(response, postData) {
 	};
 
 
-	dao.loadTemplate('./templates/startproject.html', function(buffer){
+	dao.loadTemplate('./templates/startproject.html', function(error, buffer){
+		if(error){_404(response, postData);}
 
 		jsdom.env({
 			html: buffer,
