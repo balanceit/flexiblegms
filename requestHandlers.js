@@ -92,7 +92,7 @@ function ips(response, postData) {
 				};	
 	
 	dao.loadTemplate('./templates/iplist.html', function(buffer){
-		////console.log('template iplist loaded');
+		console.log('template iplist loaded');
 		
 		jsdom.env({
 			html: buffer,
