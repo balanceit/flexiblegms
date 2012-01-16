@@ -91,7 +91,7 @@ function ips(response, postData) {
 						}
 					}
 				};	
-	
+	console.log('before attempting to load the template');
 	dao.loadTemplate('./templates/iplist.html', function(error, buffer){
 		if(error){_404(response, postData);}
 		console.log('template iplist loaded');

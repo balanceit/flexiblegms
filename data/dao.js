@@ -146,26 +146,28 @@ function getItemTemplate(item, section_uuid, ip_uuid, callback) {
 }
 
 function loadTemplate(pathname, callback) {
-  ////console.log("Request handler 'loadTemplate' was called. for the url " + pathname );
   var filePath = pathname;
   var contents = '';
+  console.log('loading template for the template: ' + pathname);
   path.exists(filePath, function(exists) {
   	
   	if (exists) {
   		fs.readFile(filePath, 'utf8', function(error, content) {
   			if (error) {
-  			    //console.log("template not found." + error);
+  			    console.log("template not found." + error);
+  			    callback(error, null);
   			}
   			else {
   			    contents = content.replace(/(\r\n|\n|\r|\t+)/gm,"");
-  			    ////console.log("calling callback ----" )
-  			    callback(contents);
+  			    console.log("calling callback ----" )
+  			    callback(null, contents);
   			    //callback('<div id="template"><div class="hello"><span class="who"></span></div></div>');
   			}
   		});
   	}
   	else {
-  		//console.log('path ' + filePath + ' does not exist.');	
+  		console.log('path ' + filePath + ' does not exist.');
+  		callback(error, null);
   	}
   });
 
