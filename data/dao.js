@@ -137,7 +137,7 @@ function getItemTemplate(item, section_uuid, ip_uuid, callback) {
 //	//console.log('\n\nnow this is the obj.item_def for item [' + item + '] -- ' + JSON.stringify(obj.item_def));
 	
 	if (obj.item_def[item]){
-		ret = fs.readFileSync('./'+obj.item_def[item], 'utf8');
+		ret = fs.readFileSync(__dirname + '/'+obj.item_def[item], 'utf8');
 
 	}
 
