@@ -4,7 +4,7 @@ var path = require('path');
 var jsdom = require('jsdom');
 var workflowDao = require(__dirname + "/workflow");
 
-var filePath = __dirname + '/data.json';
+var filePath = 'data.json';
 var obj = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
 var projectfilePath = __dirname + '/project_data.json';
