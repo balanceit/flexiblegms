@@ -65,6 +65,7 @@ function access(req, res, next){
 	if (userDao.canUserAccess(req.session.user, req.url)){
 		next();
 	} else {
+		console.log('user cannot access %s', req.url);
 		requestHandlers._404(res, req);
 	}	
 	

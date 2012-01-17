@@ -2,20 +2,14 @@ var fs = require('fs');
 var path = require('path');
 //var $ = require('jQuery');
 var jsdom = require('jsdom');
-
+var workflowDao = require(__dirname + "/workflow");
 
 var filePath = __dirname + '/data.json';
 var obj = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-
 var projectfilePath = __dirname + '/project_data.json';
 var pobj = JSON.parse(fs.readFileSync(projectfilePath, 'utf8'));
 
-
-var users = {
-		'david': {login: 'david', password: 'password', roles: ['administrator']},
-		'other': {login: 'other', password: 'other', roles: ['user']}
-};
 
 function authenticate(login, password, callback){
 	var user = users[login];
@@ -247,10 +241,13 @@ function createProject(ip_uuid, projecttitle, user, callback){
 
 	  var projects = getAllProjects();
 	  var project = {};
+	  var ip = getIP(ip_uuid);
+	  var startnode = workflowDao.getConfig({name:ip.workflow}).start.node; 
 	  
 	  
-	  console.log(projects);
+	  console.log('startnode for ip %s is %s', ip.shortName, startnode);
 	  
+	  project.state = startnode;
 	  project.uuid = String(projects.length + 1);
 	  project.ip_uuid = ip_uuid;
 	  project.name = projecttitle;

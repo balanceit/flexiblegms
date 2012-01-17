@@ -80,5 +80,6 @@ function followEdge(uuid, config_name, project_uuid, user){
 	
 }
 
+exports.getConfig = getConfig;
 exports.followEdge = followEdge;
 exports.getNextNodes = getNextNodes;

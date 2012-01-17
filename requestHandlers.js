@@ -401,6 +401,7 @@ function projects(response, postData) {
 
 
 function startProject(response, postData) {
+	console.log('starting a new project');
 	var data = dao.getIP(postData.params.ip_uuid),
 	directive = {
 		'#cancel@href':function(arg){
@@ -415,7 +416,7 @@ function startProject(response, postData) {
 
 
 	dao.loadTemplate(__dirname + '/templates/startproject.html', function(error, buffer){
-		if(error){_404(response, postData);}
+		if(error){console.log(error);_404(response, postData);}
 
 		jsdom.env({
 			html: buffer,

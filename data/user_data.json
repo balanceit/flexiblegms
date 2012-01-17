@@ -12,7 +12,7 @@
 	],
 	"roles": [
 	    {"uuid": "1", "name": "administrator", "access": ["/.*"]},
-	    {"uuid": "2", "name": "user", "access": ["/ips", "/projects.*", "/users/:uuid/*"]},
+	    {"uuid": "2", "name": "user", "access": ["/ips", "/ips/.+/project", "/projects.*", "/users/:uuid/*"]},
 	    {"uuid": "3", "name": "manager", "access": ["/ips", "/projects.*", "/users.*"]},
 	    {"uuid": "3", "name": "configure", "access": ["/ips.*", "/projects.*", "/users.*"]}
 	    

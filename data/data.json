@@ -346,6 +346,7 @@
             "name": "Near earth alien encounters",
             "shortName": "NEAE",
             "uuid": "3",
+            "workflow":"application process",
             "data": {
                 "content": "this would be some information about the IP NNER. With NEAE. we want to know all about your alien encounters, be they 1st, 2nd, 3rd or 4th kind",
                 "items": [
@@ -359,6 +360,7 @@
             "name": "water stuff investment process",
             "shortName": "WATER",
             "uuid": "1",
+            "workflow":"application process",
             "data": {
                 "content": "this would be some information about the IP water. With the WATER ip you can get money to do research in all things related to water. Waterfall tickel you fancy, go for it.  You more into water skiing, that also sounds great. How about 10 to create a better water ski.",
                 "items": [
@@ -371,6 +373,7 @@
             "name": "national network eating reference",
             "shortName": "NNER",
             "uuid": "2",
+            "workflow":"application process",
             "data": {
                 "content": "this would be some information about the IP NNER. With NNER, we say its all bout nation netware eating reference and we mean it. We are looking for people who are keen on networking all the reasearchable foods her in New Zealand.",
                 "items": [
