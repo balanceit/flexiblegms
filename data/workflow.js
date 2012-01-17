@@ -33,7 +33,7 @@ function getFlow(uuid, config_name, user){
 	for (var i = 0; i < flows.length; i++) {
 		if (flows[i].uuid === uuid){
 			for (var j = 0; j < user.roles.length; ++j){
-				if (flows[i].roles.indexOf(user.roles[j])){
+				if (flows[i].roles.indexOf(user.roles[j]) != -1){
 					ret = flows[i];
 					break;					
 				}
@@ -73,8 +73,11 @@ function followEdge(uuid, config_name, project_uuid, user){
 
 		project.state = flow.to;
 		dao.saveProject(project, user);
+		console.log('project %s has been updated to the new state of %s', project.name, flow.to);
 		ret = true;
-	} 
+	} else {
+		console.log('no flow found with the flow id of %s for the user with the roles %s ', uuid, user.roles);
+	}
 	
 	return ret;
 	
