@@ -62,9 +62,9 @@ function validate(req, section_uuid, project_uuid, callback){
 																{
 																	'div.clearfix label': 'title'
 																	,'div.clearfix label@for': function(){return item_uuid;}
-																	,'div.input *@id': function(){return item_uuid;}
-																	,'div.input *@name': function(){return item_uuid;}
-																	,'div.input *@class+': function(){return ' required email ';}
+																	,'div.clearfix div *@id': function(){return item_uuid;}
+																	,'div.clearfix div *@name': function(){return item_uuid;}
+																	,'div.clearfix div *@class+': function(){return ' required email ';}
 																});
 						
 						//the below would be in a different handler one for projects
