@@ -242,8 +242,7 @@ function createProject(ip_uuid, projecttitle, user, callback){
 	  var projects = getAllProjects();
 	  var project = {};
 	  var ip = getIP(ip_uuid);
-	  var startnode = workflowDao.getConfig({name:ip.workflow}).start.node; 
-	  
+	  var startnode = workflowDao.getConfig({name:ip.workflow}).start.node; 	  
 	  
 	  console.log('startnode for ip %s is %s', ip.shortName, startnode);
 	  
@@ -264,8 +263,6 @@ function createProject(ip_uuid, projecttitle, user, callback){
 	  
 	  pobj.projects = projects;
 
-
-	  console.log(projects);
 	  fs.writeFileSync(projectfilePath, JSON.stringify(pobj), encoding='utf8')
 	 	  
 	  callback(project);
