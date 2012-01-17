@@ -4,7 +4,7 @@ var path = require('path');
 var jsdom = require('jsdom');
 var workflowDao = require(__dirname + "/workflow");
 
-var filePath = 'data.json';
+var filePath = __dirname + '/data.json';
 var obj = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
 var projectfilePath = __dirname + '/project_data.json';
@@ -231,7 +231,7 @@ function saveProject(project, user){
 	  }
 	  pobj.projects = projects;
  
-	  fs.writeFileSync(projectfilePath, JSON.stringify(pobj), encoding='utf8')
+	  fs.writeFileSync(projectfilePath, JSON.stringify(pobj), encoding='utf8');
 	 	  
 	  //console.log('saved the project ' + JSON.stringify(project));	
 	
@@ -263,7 +263,7 @@ function createProject(ip_uuid, projecttitle, user, callback){
 	  
 	  pobj.projects = projects;
 
-	  fs.writeFileSync(projectfilePath, JSON.stringify(pobj), encoding='utf8')
+	  fs.writeFileSync(projectfilePath, JSON.stringify(pobj), encoding='utf8');
 	 	  
 	  callback(project);
 	
