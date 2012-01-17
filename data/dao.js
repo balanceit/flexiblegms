@@ -7,7 +7,7 @@ var workflowDao = require(__dirname + "/workflow");
 var filePath = __dirname + '/data.json';
 var obj = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-var projectfilePath = __dirname + '/project_data.json';
+var projectfilePath = path.normalize('./project_data.json');
 var pobj = JSON.parse(fs.readFileSync(projectfilePath, 'utf8'));
 fs.writeFileSync(projectfilePath, JSON.stringify(pobj), encoding='utf8');
 
