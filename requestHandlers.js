@@ -246,57 +246,59 @@ function section(response, postData, clean) {
 								$('div#mainContent').append(itemHtml);
 								//itemDirective = {};
 								switch (items[i].type){
-								case 'textarea': 
-
-									$('div#itemtemplate_'+items[i].uuid).render(items[i], 
-																			{
-																				'div.clearfix label': 'title'
-																				,'div.clearfix label@for': function(){return 'item_' + items[i].uuid;}
-																				,'div.input *@id': function(){return 'item_' + items[i].uuid;}
-																				,'div.input *@name': function(){return 'item_' + items[i].uuid;}
-																			});
-									$('#item_'+items[i].uuid).render({},
-											{
-												'.': function() {return project.data['item_'+items[i].uuid];}
-											});
-									break;
-								case 'textbox':
-									$('div#itemtemplate_'+items[i].uuid).render(items[i], 
-																			{
-																				'div.clearfix label': 'title'
-																				,'div.clearfix label@for': function(){return 'item_' + items[i].uuid;}
-																				,'div.input *@id': function(){return 'item_' + items[i].uuid;}
-																				,'div.input *@name': function(){return 'item_' + items[i].uuid;}
-																				,'div.input *@class+': function(){return ' required email ';}
-																			});
-									
-									//the below would be in a different handler one for projects
-									$('#item_'+items[i].uuid).render({},
-																				{
-																					'.@value': function() {
-																						var ret = {};
-																						if (clean && project.errors['item_'+items[i].uuid]){
-																							delete project.errors['item_'+items[i].uuid];
-																						} 
-																						if (project.errors && project.errors['item_'+items[i].uuid]){
-																							ret = project.errors['item_'+items[i].uuid];
-																						} else {
-																							ret = project.data['item_'+items[i].uuid];
-																						}
-									
-																						return ret;
-																					}
-																				});
-									break;
-								case 'dropdownlist':
-									$('div#itemtemplate_'+items[i].uuid).render(items[i], 
+									case 'textarea': 
+	
+										$('div#itemtemplate_'+items[i].uuid).render(items[i], 
 																				{
 																					'div.clearfix label': 'title'
 																					,'div.clearfix label@for': function(){return 'item_' + items[i].uuid;}
-																					,'div.input *@id': function(){return 'item_' + items[i].uuid;}
-																					,'div.input *@name': function(){return 'item_' + items[i].uuid;}
+																					,'div.clearfix div *@id': function(){return 'item_' + items[i].uuid;}
+																					,'div.clearfix div *@name': function(){return 'item_' + items[i].uuid;}
+																				});
+										$('#item_'+items[i].uuid).render({},
+												{
+													'.': function() {return project.data['item_'+items[i].uuid];}
+												});
+										break;
+									case 'textbox':
+										$('div#itemtemplate_'+items[i].uuid).render(items[i], 
+																				{
+																					'div.clearfix label': 'title'
+																					,'div.clearfix label@for': function(){return 'item_' + items[i].uuid;}
+																					,'div.clearfix div *@id': function(){return 'item_' + items[i].uuid;}
+																					,'div.clearfix div *@name': function(){return 'item_' + items[i].uuid;}
+																					,'div.clearfix div *@class+': function(){return ' required email ';}
 																				});
 										
+										//the below would be in a different handler one for projects
+										$('#item_'+items[i].uuid).render({},
+																					{
+																						'.@value': function() {
+																							var ret = {};
+																							if (clean && project.errors['item_'+items[i].uuid]){
+																								delete project.errors['item_'+items[i].uuid];
+																							} 
+																							if (project.errors && project.errors['item_'+items[i].uuid]){
+																								ret = project.errors['item_'+items[i].uuid];
+																							} else {
+																								ret = project.data['item_'+items[i].uuid];
+																							}
+										
+																							return ret;
+																						}
+																					});
+										break;
+									case 'dropdownlist':
+										$('div#itemtemplate_'+items[i].uuid).render(items[i], 
+																					{
+																						'div.clearfix label': 'title'
+																						,'div.clearfix label@for': function(){return 'item_' + items[i].uuid;}
+																						,'div.clearfix div *@id': function(){return 'item_' + items[i].uuid;}
+																						,'div.clearfix div *@name': function(){return 'item_' + items[i].uuid;}
+																						,'div.clearfix div@class+': function(){return ' input ';}
+																						,'div.clearfix select@class+': function(){return ' large ';}
+																					});
+											
 									break;
 								}
 				
@@ -334,7 +336,8 @@ function section(response, postData, clean) {
 								};
 
 								$('#followedge').render(flows, nodesDirective)
-												.render({"name":"flow_uuid"},{'select@id':'name','select@name':'name'});
+												.render({"name":"flow_uuid"},{'select@id':'name','select@name':'name'})
+												.render({},{'div.clearfix select@class+': function(){return ' medium ';}});
 								
 
 								console.log('in in iffff........');
