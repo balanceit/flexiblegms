@@ -9,8 +9,8 @@ var obj = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
 var projectfilePath = __dirname + '/project_data.json';
 var projectfilePathWrite = path.normalize('./project_data.json');
+
 var pobj = JSON.parse(fs.readFileSync(projectfilePath, 'utf8'));
-fs.writeFileSync(projectfilePathWrite, JSON.stringify(pobj), encoding='utf8');
 
 
 function authenticate(login, password, callback){
@@ -233,7 +233,7 @@ function saveProject(project, user){
 	  }
 	  pobj.projects = projects;
  
-	  fs.writeFileSync(projectfilePath, JSON.stringify(pobj), encoding='utf8');
+	  fs.writeFileSync(projectfilePathWrite, JSON.stringify(pobj), encoding='utf8');
 	 	  
 	  //console.log('saved the project ' + JSON.stringify(project));	
 	
@@ -265,7 +265,7 @@ function createProject(ip_uuid, projecttitle, user, callback){
 	  
 	  pobj.projects = projects;
 
-	  fs.writeFileSync(projectfilePath, JSON.stringify(pobj), encoding='utf8');
+	  fs.writeFileSync(projectfilePathWrite, JSON.stringify(pobj), encoding='utf8');
 	 	  
 	  callback(project);
 	
